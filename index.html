@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="ja" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ikazuchi.css">
+    <title>大学生のための雷</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>大学生のための雷</h1>
+      <h2>設定</h2>
+      <form id="form1" name="form_input" role="form">
+        <div>
+          <div class="form-group">
+            <label>サイズ</label>
+            <select class="form-control" id="form_size">
+              <option value="1920,1200">1920x1200</option>
+              <option value="1680,1050">1680x1050</option>
+              <option value="1280,1024">1280x1024</option>
+              <option value="1024,768">1024x768</option>
+              <option value="640,480">640x480</option>
+              <option value="0,0">カスタム</option>
+            </select>
+          </div>
+          <div class="form-group form_size_custom">
+            <label>画像の幅</label>
+            <input class="form-control" type="text" id="form_size_w" value="640">
+          </div>
+          <div class="form-group form_size_custom">
+            <label>画像の高さ</label>
+            <input class="form-control" type="text" id="form_size_h" value="480">
+          </div>
+          <div class="form-group">
+            <label>背景色</label>
+            <select class="form-control" id="form_bg_color">
+              <option value="#477568">akira</option>
+              <option value="#345488">arubaito</option>
+              <option value="#d7cfef">jikken</option>
+              <option value="#cadaeb">keisan</option>
+              <option value="#657185">gddsuser</option>
+              <option value="#c69599">mcalc</option>
+              <option value="#">カスタム</option>
+            </select>
+          </div>
+          <div class="form-group form_bg_color_custom">
+            <label>背景色 (カスタム)</label>
+            <input class="form-control" type="text" id="form_bg_color_custom" value="#b0c4de">
+          </div>
+          <div class="form-group">
+            <label>テキスト</label>
+            <textarea class="form-control" id="form_text" rows="3">いかづち</textarea>
+          </div>
+          <div class="form-group">
+            <label>フォント</label>
+            <select class="form-control" id="form_font_font">
+              <option value="Helvetica">Helvetica</option>
+              <option value="ヒラギノ角ゴ ProN">ヒラギノ角ゴ ProN</option>
+              <option value="ヒラギノ丸ゴ ProN">ヒラギノ丸ゴ ProN</option>
+              <option value="メイリオ">メイリオ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>フォントサイズ (px)</label>
+            <input class="form-control" type="text" id="form_font_size" value="32">
+          </div>
+          <div class="form-group">
+            <label>フォントの色</label>
+            <input class="form-control" type="text" id="form_font_color" value="#ffffff">
+          </div>
+          <div class="form-group">
+            <label>フォントの位置 (x,y [px])</label>
+            <input class="form-control" type="text" id="form_font_position" value="10,10">
+          </div>
+          <div class="form-group">
+            <label>画像ファイル (GIF, JPEG, PNG)</label>
+            <input type="file" id="form_bg_img" value="">
+            <div id="thumbnail_list"></div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg" id="form_generate">Generate</button>
+        <button class="btn btn-success btn-lg" id="form_generate_all">Generate All</button>
+      </form>
+      <h2>壁紙</h2>
+      <div id="wallpapers"></div>
+      <script src="js/jquery-2.0.3.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/canvas.js"></script>
+    </div>
+  </body>
+</html>
