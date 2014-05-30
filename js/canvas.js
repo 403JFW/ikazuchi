@@ -67,6 +67,10 @@ ikazuchi.form = (function() {
     return $('#form_font_color').val();
   };
 
+  var fontWeight = function() {
+    return $('#form_font_weight').val();
+  }
+
   var fontSize = function() {
     return parseInt($('#form_font_size').val());
   };
@@ -130,7 +134,7 @@ ikazuchi.form = (function() {
   var generate = function(event) {
     event.preventDefault();
     var canvas = ikazuchi.generator.generate(text(), bgColor(), imageSize(),
-                                             fontFont(), fontColor(), fontSize(), fontPosition(),
+                                             fontFont(), fontColor(), fontWeight(), fontSize(), fontPosition(),
                                              bgImage());
     $('#wallpapers').empty();
     $('#wallpapers').append(canvas);
@@ -156,7 +160,7 @@ ikazuchi.form = (function() {
     $('#wallpapers').empty();
     for (var i = 0; i < colors.length; i++) {
       var canvas = ikazuchi.generator.generate(text(), colors[i], imageSize(), fontFont(),
-                                               fontColor(), fontSize(), fontPosition(), bgImage());
+                                               fontColor(), fontWeight(), fontSize(), fontPosition(), bgImage());
       $('#wallpapers').append(canvas);
     }
   }
@@ -178,7 +182,7 @@ ikazuchi.form = (function() {
 
 ikazuchi.namespace('ikazuchi.generator');
 ikazuchi.generator = (function() {
-  var generate = function(text, bgcolor, size, fontFont, fontcolor, fontsize, fontPosition, image) {
+  var generate = function(text, bgcolor, size, fontFont, fontColor, fontWeight, fontSize, fontPosition, image) {
     var width = size[0];
     var height = size[1];
      
@@ -222,16 +226,16 @@ ikazuchi.generator = (function() {
     }
 
     //文字の描画
-    drawString(context, text, fontPosition[0], fontPosition[1], fontFont, fontsize, fontcolor);
+    drawString(context, text, fontPosition[0], fontPosition[1], fontFont, fontSize, fontColor, fontWeight);
     return canvas;
   };
 
-  var drawString = function(context, text, posx, posy, fontFont, fontSize, fontColor) {
+  var drawString = function(context, text, posx, posy, fontFont, fontSize, fontColor, fontWeight) {
     //文字の描画
     context.fillStyle = fontColor;
     context.textAlign = 'left';
     context.textBaseline = 'top';
-    context.font = fontSize + "px '" + fontFont + "'";
+    context.font = fontWeight + " " + fontSize + "px '" + fontFont + "'";
     var lines = text.split('\n');
     for(var i = 0; i < lines.length; i++){
       context.fillText(lines[i], posx, posy);
